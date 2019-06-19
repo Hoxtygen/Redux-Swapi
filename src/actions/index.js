@@ -35,15 +35,16 @@ export function addSwapis(swapis) {
 
   export const fetchSwapis = () => dispatch => {
     dispatch(fetch(true));
+    //dispatch({type: FETCH})
     // we code
     axios.get('https://swapi.co/api/people/')
       .then(res => {
           console.log(res.data)
         dispatch(addSwapis(res.data.results)); // option 2
-        dispatch(fetch(false));
+        //dispatch(fetch(false));
       })
       .catch(error => {
-        dispatch(fetch(false));
+        //dispatch(fetch(false));
         dispatch(failure(error.message));
         console.log(error.message);
       });
